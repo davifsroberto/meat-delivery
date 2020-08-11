@@ -451,6 +451,19 @@
         }
       ],
       "id": 5
+    },
+    {
+      "address": "Avenida Aruanã, 68",
+      "number": "3",
+      "optionalAddress": "",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "fries"
+        }
+      ],
+      "id": 6
     }
   ]
 }

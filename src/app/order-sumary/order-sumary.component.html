@@ -9,9 +9,8 @@
     </p>
     <p><b>Avalie</b> sua experiência:</p>
     <p>
-      <i class="fa fa-star"></i><i class="fa fa-star"></i
-      ><i class="fa fa-star"></i><i class="fa fa-star"></i
-      ><i class="fa fa-star"></i>
+      <mt-rating (rated)="rated = true"></mt-rating>
     </p>
+    <p [hidden]="!rated">Obrigado pela sua avaliação</p>
   </div>
 </section>
