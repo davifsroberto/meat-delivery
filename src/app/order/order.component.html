@@ -12,10 +12,24 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-9">
           <p class="lead">Seus dados:</p>
         </div>
 
+        <div class="col-xs-12 col-sm-3">
+          <span
+            *ngIf="orderForm.hasError('emailsNoMatch')"
+            class="help-block pull-right has-erro-block"
+          >
+            <strong>
+              <i class="fa fa-remove danger"></i>
+              E-mails diferentes
+            </strong>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-sm-6 col-xs-12">
           <mt-input-container
             errorMessage="Campo obrigatório. Minímo de 5 caracteres"
