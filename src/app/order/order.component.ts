@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
 import { RadioOption } from "app/shared/radio/radio-option.model";
 import { OrderService } from "./order.service";
 import { CartItem } from "app/restaurant-detail/shopping-cart/cart-item.model";
@@ -10,6 +12,11 @@ import { Order, OrderItem } from "./order.model";
   templateUrl: "./order.component.html",
 })
 export class OrderComponent implements OnInit {
+  numberPatern = /^[0-9]*$/;
+  emailPatern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  orderForm: FormGroup;
+
   delivery: number = 8;
 
   paymentOptions: RadioOption[] = [
@@ -18,9 +25,44 @@ export class OrderComponent implements OnInit {
     { label: "Cartão Refeição", value: "REF" },
   ];
 
-  constructor(private orderService: OrderService, private router: Router) {}
+  constructor(
+    private orderService: OrderService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+      name: this.formBuilder.control("", [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
+
+      email: this.formBuilder.control("", [
+        Validators.required,
+        Validators.pattern(this.emailPatern),
+      ]),
+
+      emailConfirmation: this.formBuilder.control("", [
+        Validators.required,
+        Validators.pattern(this.emailPatern),
+      ]),
+
+      address: this.formBuilder.control("", [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
+
+      number: this.formBuilder.control("", [
+        Validators.required,
+        Validators.pattern(this.numberPatern),
+      ]),
+
+      paymentOption: this.formBuilder.control("", [Validators.required]),
+
+      optionalAddress: this.formBuilder.control(""),
+    });
+  }
 
   itemsValue(): number {
     return this.orderService.itemsValue();
