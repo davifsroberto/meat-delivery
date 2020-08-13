@@ -30,13 +30,13 @@
       </table>
     </div>
   </div>
-  <div class="box-footer" *ngIf="items().length">
-    <th>({{ item?.quantity }}x) {{ item?.menuItem.name }}</th>
+  <div [@row]="rowState" *ngIf="items().length" class="box-footer">
+    <!-- <th>({{ item?.quantity }}x) {{ item?.menuItem.name }}</th>
     <td class="text-right">
       <a (click)="removeItem(item)" class="btn btn-sm danger">
         <i class="fa fa-remove"></i>
       </a>
-    </td>
+    </td> -->
     <div class="pull-right">
       <button (click)="clear()" type="button" class="btn btn-danger">
         <i class="fa fa-trash"></i> Limpar
