@@ -25,6 +25,7 @@ export const ROUTES: Routes = [
 
   { path: "about", loadChildren: "./about/about.module#AboutModule" },
   { path: "order", loadChildren: "./order/order.module#OrderModule" },
+  
   // Not found - wildcard
   { path: "**", component: NotFoundComponent },
 ];
