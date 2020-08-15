@@ -1,5 +1,7 @@
 import { Routes } from "@angular/router";
 
+import { LoggedInGuard } from "./security/login/loggedin.guard";
+
 import { HomeComponent } from "./home/home.component";
 import { RestaurantsComponent } from "./restaurants/restaurants.component";
 import { RestaurantDetailComponent } from "./restaurant-detail/restaurant-detail.component";
@@ -11,10 +13,11 @@ import { LoginComponent } from "./security/login/login.component";
 
 export const ROUTES: Routes = [
   { path: "", component: HomeComponent },
+  { path: "login", component: LoginComponent },
+  { path: "login/:to", component: LoginComponent },
+
   { path: "restaurants", component: RestaurantsComponent },
   { path: "order-sumary", component: OrderSumaryComponent },
-  { path: "login", component: LoginComponent },
-
   {
     path: "restaurants/:id",
     component: RestaurantDetailComponent,
@@ -26,7 +29,12 @@ export const ROUTES: Routes = [
   },
 
   { path: "about", loadChildren: "./about/about.module#AboutModule" },
-  { path: "order", loadChildren: "./order/order.module#OrderModule" },
+  {
+    path: "order",
+    loadChildren: "./order/order.module#OrderModule",
+    canLoad: [LoggedInGuard],
+    canActivate: [LoggedInGuard],
+  },
 
   // Not found - wildcard
   { path: "**", component: NotFoundComponent },
