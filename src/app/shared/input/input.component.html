@@ -1,7 +1,7 @@
 <div
-  class="form-group"
   [class.has-success]="hasSuccess()"
   [class.has-error]="hasError()"
+  class="form-group has-feedback"
 >
   <label class="control-label sr-only" for="inputSuccess">
     <i class="fa fa-check"></i>{{ label }}
@@ -10,14 +10,14 @@
   <ng-content></ng-content>
 
   <span
-    *ngIf="input.valid && (input.dirty || input.touched)"
+    *ngIf="showTip && input.valid && (input.dirty || input.touched)"
     class="help-block"
   >
     <i class="fa fa-check"></i> Ok
   </span>
 
   <span
-    *ngIf="!input.valid && (input.dirty || input.touched)"
+    *ngIf="showTip && !input.valid && (input.dirty || input.touched)"
     class="help-block"
   >
     <i class="fa fa-remove"></i> {{ errorMessage }}

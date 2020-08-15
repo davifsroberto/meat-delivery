@@ -7,11 +7,13 @@ import { MenuComponent } from "./restaurant-detail/menu/menu.component";
 import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
 import { OrderSumaryComponent } from "./order-sumary/order-sumary.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { LoginComponent } from "./security/login/login.component";
 
 export const ROUTES: Routes = [
   { path: "", component: HomeComponent },
   { path: "restaurants", component: RestaurantsComponent },
   { path: "order-sumary", component: OrderSumaryComponent },
+  { path: "login", component: LoginComponent },
 
   {
     path: "restaurants/:id",
@@ -25,7 +27,7 @@ export const ROUTES: Routes = [
 
   { path: "about", loadChildren: "./about/about.module#AboutModule" },
   { path: "order", loadChildren: "./order/order.module#OrderModule" },
-  
+
   // Not found - wildcard
   { path: "**", component: NotFoundComponent },
 ];
