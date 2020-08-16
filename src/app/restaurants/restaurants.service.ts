@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 
 import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/catch";
 
 import { Restaurant } from "./restaurant/restaurant.model";
 import { MenuItem } from "app/restaurant-detail/menu-item/menu-item.model";
@@ -20,7 +18,7 @@ export class RestaurantsService {
       params = new HttpParams().append(MEAT_API_PARAM_QUERY, search);
     }
 
-    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, {
+    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurantss`, {
       params: params,
     });
   }
