@@ -159,12 +159,14 @@
       <div class="col-xs-12">
         <button
           (click)="checkOrder(orderForm.value)"
-          [disabled]="!orderForm.valid || cartItems().length == 0"
+          [disabled]="!orderForm.valid || cartItems().length === 0"
           class="btn btn-success pull-right"
         >
           <i class="fa fa-credit-card"></i> Concluir Pedido
         </button>
       </div>
     </div>
+
+    {{!orderForm.valid}}
   </section>
 </section>

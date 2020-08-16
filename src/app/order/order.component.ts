@@ -3,9 +3,12 @@ import { Router } from "@angular/router";
 import {
   FormGroup,
   FormBuilder,
+  FormControl,
   Validators,
   AbstractControl,
 } from "@angular/forms";
+
+import { tap } from "rxjs/operators";
 
 import { RadioOption } from "app/shared/radio/radio-option.model";
 import { OrderService } from "./order.service";
@@ -39,12 +42,11 @@ export class OrderComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group(
+    this.orderForm = new FormGroup(
       {
-        name: this.formBuilder.control("", [
-          Validators.required,
-          Validators.minLength(5),
-        ]),
+        name: new FormControl("", {
+          validators: [Validators.required, Validators.minLength(5)],
+        }),
 
         email: this.formBuilder.control("", [
           Validators.required,
@@ -70,7 +72,7 @@ export class OrderComponent implements OnInit {
 
         optionalAddress: this.formBuilder.control(""),
       },
-      { validator: OrderComponent.equalsTo }
+      { validators: [OrderComponent.equalsTo], updateOn: "change" }
     );
   }
 
@@ -119,9 +121,11 @@ export class OrderComponent implements OnInit {
 
     this.orderService
       .checkOrder(order)
-      .do((orderId: string) => {
-        this.orderId = orderId;
-      })
+      .pipe(
+        tap((orderId: string) => {
+          this.orderId = orderId;
+        })
+      )
       .subscribe((orderId: string) => {
         this.router.navigate(["/order-sumary"]);
 
