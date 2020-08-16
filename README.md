@@ -12,22 +12,12 @@ restaurantes delivery.
 
 `ng serve` ou `npm start`
 
-## 2. Iniciando o Backend
+## 2. Iniciando o Backend (para testar local)
 
 ### Instalando o json-server
 
-`npm install -g json-server`
+`npm install -g nodemon`
 
-### Iniciando o serviço (raiz da aplicação)
+### Iniciando o serviço
 
-`json-server db.json`
-
-<!-- Expressões regulares usadas na validação de formulários
-
-### Email Regex
-
-`/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i`
-
-### Number Regex
-
-`/^[0-9]*$/` -->
+Entre na pasta backend e execulte o comando: `nodemon dist/server.js`
