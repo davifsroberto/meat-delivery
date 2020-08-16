@@ -18,7 +18,7 @@ export class RestaurantsService {
       params = new HttpParams().append(MEAT_API_PARAM_QUERY, search);
     }
 
-    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurantss`, {
+    return this.http.get<Restaurant[]>(`${MEAT_API}/restaurants`, {
       params: params,
     });
   }
