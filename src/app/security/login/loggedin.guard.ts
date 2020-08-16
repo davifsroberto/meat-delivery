@@ -24,6 +24,8 @@ export class LoggedInGuard implements CanLoad, CanActivate {
   }
 
   canLoad(route: Route): boolean {
+    console.log("canLoad");
+
     return this.checkAuthentication(route.path);
   }
 
@@ -31,6 +33,8 @@ export class LoggedInGuard implements CanLoad, CanActivate {
     activatedRoute: ActivatedRouteSnapshot,
     routerState: RouterStateSnapshot
   ): boolean {
+    console.log("canActivate");
+
     return this.checkAuthentication(activatedRoute.routeConfig.path);
   }
 }

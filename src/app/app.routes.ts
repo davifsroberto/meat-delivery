@@ -13,11 +13,8 @@ import { LoginComponent } from "./security/login/login.component";
 
 export const ROUTES: Routes = [
   { path: "", component: HomeComponent },
-  { path: "login", component: LoginComponent },
   { path: "login/:to", component: LoginComponent },
-
-  { path: "restaurants", component: RestaurantsComponent },
-  { path: "order-sumary", component: OrderSumaryComponent },
+  { path: "login", component: LoginComponent },
   {
     path: "restaurants/:id",
     component: RestaurantDetailComponent,
@@ -27,15 +24,15 @@ export const ROUTES: Routes = [
       { path: "reviews", component: ReviewsComponent },
     ],
   },
-
-  { path: "about", loadChildren: "./about/about.module#AboutModule" },
+  { path: "restaurants", component: RestaurantsComponent },
   {
     path: "order",
     loadChildren: "./order/order.module#OrderModule",
     canLoad: [LoggedInGuard],
     canActivate: [LoggedInGuard],
   },
-
+  { path: "order-sumary", component: OrderSumaryComponent },
+  { path: "about", loadChildren: "./about/about.module#AboutModule" },
   // Not found - wildcard
   { path: "**", component: NotFoundComponent },
 ];

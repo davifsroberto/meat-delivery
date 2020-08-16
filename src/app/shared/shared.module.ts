@@ -7,14 +7,14 @@ import { RatingComponent } from "./rating/rating.component";
 import { RadioComponent } from "./radio/radio.component";
 import { SnackbarComponent } from "./messages/snackbar/snackbar.component";
 
-import { LoggedInGuard } from "app/security/login/loggedin.guard";
-
 import { OrderService } from "../order/order.service";
 import { ShoppingCartService } from "../restaurant-detail/shopping-cart/shopping-cart.service";
 import { RestaurantsService } from "../restaurants/restaurants.service";
 import { NotificationService } from "./messages/notification.service";
 import { LoginService } from "app/security/login/login.service";
 
+import { LoggedInGuard } from "app/security/login/loggedin.guard";
+import { LeaveOrderGuard } from "app/order/leave-order.guard";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ export class SharedModule {
         OrderService,
         NotificationService,
         LoginService,
-        LoggedInGuard
+        LoggedInGuard,
+        LeaveOrderGuard,
       ],
     };
   }
